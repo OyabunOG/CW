@@ -20,62 +20,68 @@
 
 <body>
 
-    <header>
-        <div class="container">
 
-            <div class="logo">
-                <a href="#"><img src="images/logocw.png" alt="CW Trabalhos Verticais"></a>
+<header>
+    <div class="container">
 
-                <!--<div class="logo-text">
-                    <h1>CW</h1>
-                    <span>Trabalhos Verticais</span>
-                </div>-->
-            </div>
-
-            <nav>
-  		<a href="#">Home</a>
-                <a href="#sobre">Sobre</a>
-                <a href="#servicos">Serviços</a>
-                <!-- <a href="#projetos">Projetos</a> -->
-		<a href="#antes-depois">Antes e Depois</a>
-                <!-- <a href="#certificacoes">Certificações</a> -->
-                <a href="#contactos">Contactos</a>
-            </nav>
-
+        <div class="logo">
+            <a href="#">
+                <img src="images/logocw.png" alt="CW Trabalhos Verticais">
+            </a>
         </div>
-    </header>
 
-	<section class="hero">
+        <button class="menu-toggle"
+                type="button"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+                aria-controls="main-nav">
+            <i class="fa-solid fa-bars"></i>
+        </button>
 
-		<div class="container">
+        <nav id="main-nav">
+            <a href="#">Home</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#antes-depois">Antes e Depois</a>
+            <a href="#contactos">Contactos</a>
+        </nav>
 
-			<h2>Trabalhos Verticais com Segurança, Eficiência e Qualidade</h2>
+    </div>
+</header>
 
-			<p>
-				Soluções seguras e eficientes para manutenção,
-				limpeza, impermeabilização e reparação em altura.
-			</p>
 
-		<div class="hero-features">
+<section class="hero">
+
+    <div class="container hero-content">
+
+        <h2>Trabalhos Verticais com Segurança, Eficiência e Qualidade</h2>
+
+        <p>
+            Soluções seguras e eficientes para manutenção,
+            limpeza, impermeabilização e reparação em altura.
+        </p>
+
+        <div class="hero-features">
             <span>✓ Sem andaimes</span>
             <span>✓ Técnicos especializados</span>
             <span>✓ Intervenções rápidas</span>
             <span>✓ Orçamento gratuito</span>
         </div>
 
-			<div class="hero-buttons">
-				<a href="#contactos" class="btn">
-					Pedir Orçamento
-				</a>
+        <div class="hero-buttons">
+            <a href="#contactos" class="btn">
+                Pedir Orçamento
+            </a>
 
-				<a href="#antes-depois" class="btn-secondary">
-					Ver Trabalhos
-				</a>
-			</div>
+            <a href="#antes-depois" class="btn-secondary">
+                Ver Trabalhos
+            </a>
+        </div>
 
-		</div>
+    </div>
 
-	</section>
+</section>
+
 
     <section id="sobre" class="section">
 
@@ -521,7 +527,7 @@
 
 			<span>Siga-nos no Instagram</span>
 
-			<a href="https://www.instagram.com/clea.nwave/" target="_blank" aria-label="Instagram">
+			<a href="https://www.instagram.com/_cw.tec/" target="_blank" aria-label="Instagram">
 				<i class="fa-brands fa-instagram"></i>
 			</a>
 
@@ -543,6 +549,69 @@
 		<i class="fa-brands fa-whatsapp"></i>
 
 	</a>
+
+
+<!--*** MENU HAMBURGUER *** -->
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const mainNav = document.querySelector('#main-nav');
+const menuIcon = menuToggle.querySelector('i');
+
+// Abrir e fechar o menu
+function toggleMenu(forceClose = false) {
+    const isOpen = mainNav.classList.contains('active');
+
+    if (forceClose || isOpen) {
+        mainNav.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menu');
+
+        menuIcon.classList.remove('fa-xmark');
+        menuIcon.classList.add('fa-bars');
+    } else {
+        mainNav.classList.add('active');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        menuToggle.setAttribute('aria-label', 'Fechar menu');
+
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-xmark');
+    }
+}
+
+// Clique no botão hamburger
+menuToggle.addEventListener('click', () => {
+    toggleMenu();
+});
+
+// Fechar ao clicar numa ligação
+mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        toggleMenu(true);
+    });
+});
+
+// Fechar ao clicar fora do menu
+document.addEventListener('click', (event) => {
+    const clickedInsideMenu = mainNav.contains(event.target);
+    const clickedButton = menuToggle.contains(event.target);
+
+    if (!clickedInsideMenu && !clickedButton) {
+        toggleMenu(true);
+    }
+});
+
+// Fechar com a tecla Escape
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        toggleMenu(true);
+    }
+});
+</script>
+</body>
+</html>
+
+
 
 </body>
 

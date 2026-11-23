@@ -108,14 +108,33 @@ nav a:hover{
     color:var(--secondary);
 }
 
+
+/* Botão do menu mobile */
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1002;
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+    color: var(--secondary);
+}
+
+
+
 /* HERO */
 
-.hero{
+.hero {
     position: relative;
 
-    /* A TUA IMAGEM AQUI */
     background-image: url("images/banner_tmp_inicial.jpg");
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -123,89 +142,181 @@ nav a:hover{
     color: white;
     text-align: center;
 
-    padding: 120px 20px;
-	
-	min-height:80vh;
+    min-height: 80vh;
+    padding: 100px 20px;
 
-    display:flex;
-    align-items:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
 }
 
+/* SOBREPOSIÇÃO PARA MELHORAR A LEITURA */
 
-
-/* overlay azul por cima da imagem */
-.hero::before{
+.hero::before {
     content: "";
     position: absolute;
     inset: 0;
 
     background: linear-gradient(
-        rgba(160, 193, 114, 0.85),
-        rgba(160, 193, 114, 0.60)
+        135deg,
+        rgba(31, 125, 160, 0.82),
+        rgba(31, 125, 160, 0.60),
+        rgba(0, 0, 0, 0.35)
     );
 
     z-index: 1;
-
     pointer-events: none;
 }
 
-.hero p{
-    max-width:700px;
-    margin:auto;
-    font-size:1.2rem;
+/* CONTEÚDO */
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1050px;
+    margin: auto;
 }
 
-/* HERO FEATURES */
+/* TÍTULO */
 
-.hero-features{
-    margin-top:30px;
+.hero h2 {
+    font-size: 3.4rem;
+    line-height: 1.12;
+    max-width: 950px;
+    margin: 0 auto 25px;
 
-    display:flex;
-    justify-content:center;
-    gap:25px;
-
-    flex-wrap:wrap;
+    text-shadow: 0 3px 15px rgba(0,0,0,0.35);
 }
 
-.hero-features span{
-    background:rgba(255,255,255,0.18);
+/* DESCRIÇÃO */
 
-    border:1px solid rgba(255,255,255,0.30);
+.hero p {
+    max-width: 700px;
+    margin: auto;
 
-    padding:12px 20px;
+    font-size: 1.2rem;
+    line-height: 1.7;
 
-    border-radius:30px;
-
-    font-size:0.95rem;
-    font-weight:bold;
-
-    backdrop-filter:blur(4px);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
-.hero h2{
-    font-size:3.4rem;
-    line-height:1.1;
-    margin-bottom:20px;
+/* PONTOS FORTES */
 
-    text-shadow:0 3px 15px rgba(0,0,0,0.2);
+.hero-features {
+    margin-top: 35px;
+
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    flex-wrap: wrap;
 }
 
-/* HERO BUTTONS */
+.hero-features span {
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.35);
 
-.hero-buttons{
-    margin-top:35px;
+    padding: 12px 20px;
+    border-radius: 30px;
 
-    display:flex;
-    justify-content:center;
-    gap:15px;
+    font-size: 0.95rem;
+    font-weight: bold;
 
-    flex-wrap:wrap;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 }
 
-.hero-buttons a{
-    width:220px;
-    text-align:center;
+/* BOTÕES */
+
+.hero-buttons {
+    margin-top: 40px;
+
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    flex-wrap: wrap;
 }
+
+.hero-buttons a {
+    width: 220px;
+    text-align: center;
+    padding: 15px 20px;
+}
+
+
+/* RESPONSIVE - TABLET E MOBILE */
+
+@media (max-width: 768px) {
+
+    .hero {
+        min-height: auto;
+        padding: 85px 20px 75px;
+
+        background-position: center center;
+    }
+
+    .hero h2 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    .hero-features {
+        margin-top: 25px;
+        gap: 10px;
+    }
+
+    .hero-features span {
+        font-size: 0.85rem;
+        padding: 10px 14px;
+    }
+
+    .hero-buttons {
+        margin-top: 30px;
+        gap: 12px;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+        max-width: 300px;
+        padding: 15px;
+    }
+
+}
+
+
+/* TELEMÓVEIS PEQUENOS */
+
+@media (max-width: 400px) {
+
+    .hero {
+        padding: 65px 15px;
+    }
+
+    .hero h2 {
+        font-size: 1.85rem;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+    }
+
+    .hero-features span {
+        font-size: 0.8rem;
+        padding: 9px 12px;
+    }
+
+}
+
 
 /* BOTÕES */
 .btn,
@@ -623,76 +734,91 @@ footer p{
 
 /* RESPONSIVO */
 
-@media(max-width:768px){
 
-    header .container{
-        flex-direction:column;
-        gap:15px;
+@media (max-width: 768px) {
+
+    /* CABEÇALHO */
+    header .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+        position: relative;
     }
 
-    nav{
-        flex-wrap:wrap;
-        justify-content:center;
+    .logo {
+        flex-direction: row;
+        align-items: center;
     }
 
-    nav a{
-        margin:8px 10px;
+    .logo img {
+        height: 55px;
     }
 
-    .logo{
-        flex-direction:column;
-        text-align:center;
+    /* BOTÃO HAMBURGUER */
+    .menu-toggle {
+        display: block;
     }
 
-    .logo img{
-        height:60px;
+    /* MENU */
+    header nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 100vw;
+        background: var(--primary);
+
+        padding: 10px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        transition: opacity 0.25s ease,
+                    visibility 0.25s ease;
     }
 
-    .hero{
-        padding:110px 20px;
+    /* MENU ABERTO */
+    header nav.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 
-    .hero h2{
-        font-size:2.3rem;
+    header nav a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        padding: 14px 20px;
+        color: white;
     }
 
-    .hero p{
-        font-size:1rem;
-    }
-	
-	.hero-features{
-    flex-direction:column;
-    align-items:center;
-    gap:10px;
-	}
-
-	.hero-buttons{
-		flex-direction:column;
-		align-items:center;
-	}
-
-	.btn,
-	.btn-secondary{
-		width:250px;
-	}
-
-    .section{
-        padding:60px 0;
+    header nav a:hover {
+        background: var(--primary-dark);
+        color: var(--secondary);
     }
 
-    .section h2{
-        font-size:1.8rem;
+    /* SECÇÕES */
+    section {
+        padding: 50px 0;
     }
-	
-	.before-after-grid{
-    grid-template-columns:1fr;
-	}
 
-	.comparison-images{
-		grid-template-columns:1fr;
-	}
+    /* CARTÕES */
+    .cards {
+        grid-template-columns: 1fr;
+    }
 
-	.comparison-image img{
-		height:220px;
-	}
+    /* ANTES E DEPOIS */
+    .before-after {
+        flex-direction: column;
+    }
+
 }
